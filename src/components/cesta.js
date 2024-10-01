@@ -5,12 +5,14 @@ import { CestaContext } from '../context/cesta-context';
 import '../components/styles/cesta.css';
 
 const Cesta = () => {
-    const { cesta, removeFromCesta, updateCantidad, isAuthenticated, userInfo } = useContext(CestaContext);
+    const { cesta, removeFromCesta, updateCantidad, vaciarCesta, isAuthenticated, userInfo } = useContext(CestaContext);
     const navigate = useNavigate();
 
     const handleRealizarPedido = async () => {
         if (!isAuthenticated()) {
             navigate('/login');
+        } else if (!userInfo) {
+            alert('No se pudo obtener la información del usuario. Por favor, intente nuevamente.');
         } else {
             try {
                 const token = localStorage.getItem('token');
@@ -50,8 +52,9 @@ const Cesta = () => {
                     });
                 }
 
-                console.log('Pedido realizado:', orderResponse.data);
-                alert('Pedido realizado con éxito!');
+                console.log('Pedido realizado');
+                vaciarCesta(); // Vaciar la cesta
+                navigate('/perfil'); // Redirigir a la página de perfil
             } catch (error) {
                 console.error('Error al realizar el pedido:', error);
                 alert('Hubo un error al realizar el pedido.');

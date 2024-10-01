@@ -32,6 +32,10 @@ export const CestaProvider = ({ children }) => {
     );
   };
 
+  const vaciarCesta = () => {
+    setCesta([]);
+  };
+
   const getCestaCount = () => {
     return cesta.reduce((total, producto) => total + producto.cantidad, 0);
   };
@@ -41,7 +45,7 @@ export const CestaProvider = ({ children }) => {
   };
 
   return (
-    <CestaContext.Provider value={{ cesta, addToCesta, removeFromCesta, updateCantidad, getCestaCount, user, setUser, userInfo, setUserInfo, isAuthenticated }}>
+    <CestaContext.Provider value={{ cesta, addToCesta, removeFromCesta, updateCantidad, vaciarCesta, getCestaCount, user, setUser, userInfo, setUserInfo, isAuthenticated }}>
       {children}
     </CestaContext.Provider>
   );
