@@ -1,0 +1,91 @@
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { CestaContext } from '../context/cesta-context';
+import '../components/styles/cesta.css';
+
+const Cesta = () => {
+    const { cesta, removeFromCesta, updateCantidad, isAuthenticated, userInfo } = useContext(CestaContext);
+    const navigate = useNavigate();
+
+    const handleRealizarPedido = async () => {
+        if (!isAuthenticated()) {
+            navigate('/login');
+        } else {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    throw new Error('No se encontró el token de autenticación');
+                }
+
+                // Calcular el total_price
+                const total_price = cesta.reduce((total, producto) => total + producto.price * producto.cantidad, 0);
+
+                // Crear el pedido
+                const orderResponse = await axios.post('https://vikingsdb.up.railway.app/orders/', {
+                    user_id: userInfo.id, // Utilizar el user_id del contexto
+                    order_date: new Date().toISOString(),
+                    total_price: total_price,
+                    status: 'procesando'
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                const orderId = orderResponse.data.id;
+
+                // Añadir los artículos al pedido
+                for (const producto of cesta) {
+                    await axios.post('https://vikingsdb.up.railway.app/products_order/', {
+                        product_id: producto.id,
+                        order_id: orderId,
+                        quantity: producto.cantidad,
+                        price: producto.price,
+                        total: producto.price * producto.cantidad
+                    }, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                }
+
+                console.log('Pedido realizado:', orderResponse.data);
+                alert('Pedido realizado con éxito!');
+            } catch (error) {
+                console.error('Error al realizar el pedido:', error);
+                alert('Hubo un error al realizar el pedido.');
+            }
+        }
+    };
+
+    return (
+        <div className="cesta-container">
+            <h1>Tu Cesta</h1>
+            {cesta.length === 0 ? (
+                <p>No hay productos en la cesta.</p>
+            ) : (
+                <div className="productos-cesta">
+                    {cesta.map((producto, index) => (
+                        <div key={index} className="producto-cesta">
+                            <img src={producto.image} alt={producto.name} className="producto-cesta-imagen" />
+                            <h2 className="producto-cesta-nombre">{producto.name}</h2>
+                            <p className="producto-cesta-precio">{producto.price.toFixed(2)} €</p>
+                            <input
+                                type="number"
+                                min="1"
+                                value={producto.cantidad}
+                                onChange={(e) => updateCantidad(producto.id, parseInt(e.target.value))}
+                                className="producto-cantidad"
+                            />
+                            <button className="producto-cesta-boton" onClick={() => removeFromCesta(producto.id)}>Eliminar</button>
+                        </div>
+                    ))}
+                    <button className="realizar-pedido-boton" onClick={handleRealizarPedido}>Realizar Pedido</button>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Cesta;

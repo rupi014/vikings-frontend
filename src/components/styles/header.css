@@ -41,6 +41,10 @@
     color: #ffd700;
     text-decoration: none;
   }
+
+  .login:visited {
+    color: #ffd700;
+  }
   
   .cart {
     display: flex;
@@ -55,6 +59,14 @@
   
   .cart-count {
     margin-left: 5px;
+  }
+
+  .user-greeting {
+    color: #ffcc00;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
   }
   
   /* Estilos para el menú desplegable */

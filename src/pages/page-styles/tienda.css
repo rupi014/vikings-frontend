@@ -1,0 +1,39 @@
+/* src/pages/page-styles/tienda.css */
+.tienda-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  background-color: #333;
+  color: #ffcc00;
+}
+
+.filtros {
+  background-color: #222;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filtros h2, .filtros h3 {
+  color: #ffcc00;
+}
+
+.filtros a {
+  color: #ffcc00;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.filtros a:hover {
+  text-decoration: underline;
+}
+
+.productos-container {
+  padding: 20px;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}

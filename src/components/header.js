@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { CestaContext } from '../context/cesta-context.js';
 import './styles/header.css';
 import HeaderLogo from '../assets/images/logos/header-logo.png';
 
 const Header = () => {
+  const { getCestaCount, user } = useContext(CestaContext);
+  const navigate = useNavigate();
   return (
     <header className="header">
       <div className="logo">
@@ -29,10 +32,14 @@ const Header = () => {
         </ul>
       </nav>
       <div className="user-actions">
-        <Link to="/login" className="login">Log In</Link>
-        <Link to="/cart" className="cart">
+      {user ? (
+          <span className="user-greeting" onClick={() => navigate('/perfil')}>Hola {user}</span>
+        ) : (
+          <Link to="/login" className="login">Log In</Link>
+        )}
+        <Link to="/cesta" className="cart">
           <span className="cart-icon">🛒</span>
-          <span className="cart-count">0</span>
+          <span className="cart-count">{getCestaCount()}</span>
         </Link>
       </div>
     </header>

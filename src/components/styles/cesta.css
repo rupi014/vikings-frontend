@@ -1,0 +1,71 @@
+.cesta-container {
+    padding: 20px;
+    background-color: #333;
+    color: #ffcc00;
+    height: 100vh;
+  }
+  
+  .productos-cesta {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  .producto-cesta {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .producto-cesta-imagen {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .producto-cesta-nombre {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .producto-cesta-precio {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  .producto-cantidad {
+    width: 50px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .producto-cesta-boton {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .producto-cesta-boton:hover {
+    background-color: red;
+  }
+
+  .realizar-pedido-boton {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    grid-column: span 2; /* Para que el botón ocupe dos columnas en la cuadrícula */
+  }
+  
+  .realizar-pedido-boton:hover {
+    background-color: #e6b800;
+  }
