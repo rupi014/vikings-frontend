@@ -8,6 +8,8 @@ const Perfil = () => {
   const navigate = useNavigate();
   const { setUser, setUserInfo, userInfo } = useContext(CestaContext);
   const [userOrders, setUserOrders] = useState([]);
+  const [orderProducts, setOrderProducts] = useState([]);
+  const [productNames, setProductNames] = useState({});
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -53,6 +55,33 @@ const Perfil = () => {
     navigate('/login');
   };
 
+  const handleViewProducts = async (orderId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`https://vikingsdb.up.railway.app/products_order/${orderId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const products = response.data;
+      setOrderProducts(products);
+
+      // Fetch product names
+      const productNamesTemp = {};
+      for (const product of products) {
+        const productResponse = await axios.get(`https://vikingsdb.up.railway.app/products/${product.product_id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        productNamesTemp[product.product_id] = productResponse.data.name;
+      }
+      setProductNames(productNamesTemp);
+    } catch (error) {
+      console.error('Error fetching order products:', error);
+    }
+  };
+
   if (!userInfo) {
     return <div>Loading...</div>;
   }
@@ -76,6 +105,7 @@ const Perfil = () => {
               <th>Fecha</th>
               <th>Total</th>
               <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -85,10 +115,38 @@ const Perfil = () => {
                 <td>{new Date(order.order_date).toLocaleDateString()}</td>
                 <td>{order.total_price.toFixed(2)} €</td>
                 <td>{order.status}</td>
+                <td>
+                  <button onClick={() => handleViewProducts(order.id)}>Ver Productos</button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        {orderProducts.length > 0 && (
+          <div className="order-products">
+            <h3>Productos del Pedido</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Producto ID</th>
+                  <th>Nombre</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orderProducts.map(product => (
+                  <tr key={product.id}>
+                    <td>{product.product_id}</td>
+                    <td>{productNames[product.product_id] || 'Cargando...'}</td>
+                    <td>{product.quantity}</td>
+                    <td>{product.price.toFixed(2)} €</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
