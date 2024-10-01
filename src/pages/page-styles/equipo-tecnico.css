@@ -1,0 +1,30 @@
+.equipo-tecnico-container {
+  text-align: center;
+  background-color: #333;
+  color: #ffca00;
+  padding: 20px;
+  height: 100%;
+}
+
+.equipo-tecnico-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.miembro {
+  text-align: center;
+}
+
+.miembro img {
+  width: 150px;
+  height: 300px;
+  object-fit: cover;
+  border: 2px solid #ff0;
+}
+
+.miembro p {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}

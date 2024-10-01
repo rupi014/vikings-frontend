@@ -1,0 +1,87 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 0 20px; /* Ajusta el padding para que no afecte la altura del logo */
+    background-image: url('../../assets/images/fondos/header-fondo.webp');
+    background-size: cover;
+    background-position: center;
+    height: 100px; /* Ajusta la altura del header según tus necesidades */
+  }
+  
+  .logo {
+    height: 100%; /* Asegúrate de que el contenedor del logo ocupe todo el alto del header */
+}
+
+.logo img {
+    height: 100%; /* Hace que la imagen ocupe todo el alto del contenedor del logo */
+    object-fit: contain; /* Ajusta la imagen para que se contenga dentro del contenedor */
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .login {
+    color: #ffd700;
+    text-decoration: none;
+  }
+  
+  .cart {
+    display: flex;
+    align-items: center;
+    color: #ffd700;
+    text-decoration: none;
+  }
+  
+  .cart-icon {
+    font-size: 24px;
+  }
+  
+  .cart-count {
+    margin-left: 5px;
+  }
+  
+  /* Estilos para el menú desplegable */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #575757;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }

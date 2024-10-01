@@ -1,0 +1,13 @@
+.equipos-container {
+  text-align: center;
+  background-color: #333;
+  color: #ff0;
+  padding: 20px;
+  height: 100%;
+}
+
+.equipos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
