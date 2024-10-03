@@ -56,6 +56,7 @@ const Cesta = () => {
                 }
 
                 console.log('Pedido realizado');
+                localStorage.setItem('lastOrder', JSON.stringify(cesta));
                 vaciarCesta(); // Vaciar la cesta
                 navigate('/pago'); // Redirigir a la página de pago
             } catch (error) {

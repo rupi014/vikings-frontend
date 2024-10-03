@@ -39,7 +39,7 @@ const ProductoDetalles = () => {
     }
 
     addToCesta(productoConDetalles);
-    console.log('Producto agregado al carrito:', productoConDetalles);
+    console.log('Producto agregado al carrito');
   };
 
   if (error) {
