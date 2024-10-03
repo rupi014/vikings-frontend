@@ -59,7 +59,7 @@ const Pago = () => {
             onApprove={(data, actions) => {
               return actions.order.capture().then(details => {
                 alert(`Transaction completed by ${details.payer.name.given_name}`);
-                // Aquí puedes manejar la lógica después de un pago exitoso
+                window.location.href = '/perfil';
               });
             }}
             onError={(err) => {
