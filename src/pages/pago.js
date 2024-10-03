@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './page-styles/pago.css';
 
 const Pago = () => {
@@ -10,6 +11,9 @@ const Pago = () => {
       setCesta(storedCesta);
     }
   }, []);
+
+  // Calcular el total del pedido
+  const totalAmount = cesta.reduce((total, producto) => total + producto.price * producto.cantidad, 0);
 
   return (
     <div className="pago-page">
@@ -30,8 +34,41 @@ const Pago = () => {
             <p>No hay productos en el pedido.</p>
             )}
         </div>
-        <button className="pagar-boton">Pagar</button>
+        <div className="pago-total">
+            <p>Total: {totalAmount} €</p>
         </div>
+        <PayPalScriptProvider 
+            options={{ 
+                "client-id": "AfvD3MxmCdNpIpy7v5TXHE1mWbYUSHf0uvV_E7OkGBVzWht18ymA5cwXx1CCoYGr2uR2_tvjothHBUQU",
+                currency: "EUR", // Asegúrate de que la moneda esté configurada aquí
+                intent: "capture",
+            }}>
+
+          <PayPalButtons
+            style={{ layout: 'vertical' }}
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: totalAmount.toFixed(2), // Total del pedido
+                    currency_code: 'EUR'
+                  }
+                }]
+              });
+            }}
+            onApprove={(data, actions) => {
+              return actions.order.capture().then(details => {
+                alert(`Transaction completed by ${details.payer.name.given_name}`);
+                // Aquí puedes manejar la lógica después de un pago exitoso
+              });
+            }}
+            onError={(err) => {
+              console.error('Error en el pago de PayPal:', err);
+              alert('Hubo un error al procesar el pago.');
+            }}
+          />
+        </PayPalScriptProvider>
+      </div>
     </div>
   );
 };
