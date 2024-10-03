@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { CestaContext } from '../context/cesta-context';
@@ -7,6 +7,7 @@ import '../components/styles/cesta.css';
 const Cesta = () => {
     const { cesta, removeFromCesta, vaciarCesta, isAuthenticated, userInfo } = useContext(CestaContext);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleRealizarPedido = async () => {
         if (!isAuthenticated()) {
@@ -15,6 +16,7 @@ const Cesta = () => {
             alert('No se pudo obtener la información del usuario. Por favor, intente nuevamente.');
         } else {
             try {
+                setLoading(true); // Set loading to true
                 const token = localStorage.getItem('token');
                 if (!token) {
                     throw new Error('No se encontró el token de autenticación');
@@ -59,6 +61,8 @@ const Cesta = () => {
             } catch (error) {
                 console.error('Error al realizar el pedido:', error);
                 alert('Hubo un error al realizar el pedido.');
+            } finally {
+                setLoading(false); // Reset loading state
             }
         }
     };
@@ -80,7 +84,9 @@ const Cesta = () => {
                             <button className="producto-cesta-boton" onClick={() => removeFromCesta(producto.id)}>Eliminar</button>
                         </div>
                     ))}
-                    <button className="realizar-pedido-boton" onClick={handleRealizarPedido}>Realizar Pedido</button>
+                    <button className="realizar-pedido-boton" onClick={handleRealizarPedido} disabled={loading}>
+                        {loading ? 'Realizando Pedido' : 'Realizar Pedido'}
+                    </button>
                 </div>
             )}
         </div>
