@@ -51,7 +51,9 @@ export const CestaProvider = ({ children }) => {
   };
 
   const isAuthenticated = () => {
-    return user !== null;
+    const token = localStorage.getItem('token');
+    // Verifica si el token es válido (puedes hacer una llamada a la API para verificarlo)
+    return token !== null && user !== null;
   };
 
   return (

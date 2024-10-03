@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-  const { setUser } = useContext(CestaContext);
+  const { setUser, setUserInfo } = useContext(CestaContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,8 +20,19 @@ const Login = () => {
 
       const response = await axios.post('https://vikingsdb.up.railway.app/token', params);
       localStorage.setItem('token', response.data.access_token);
-      localStorage.setItem('userName', username);
-      setUser(username);
+
+      // Obtener la información del usuario después de iniciar sesión
+      const userResponse = await axios.get('https://vikingsdb.up.railway.app/users/me', {
+        headers: {
+          Authorization: `Bearer ${response.data.access_token}`,
+        },
+      });
+
+      localStorage.setItem('userName', userResponse.data.username);
+      localStorage.setItem('userInfo', JSON.stringify(userResponse.data));
+      setUser(userResponse.data.username);
+      setUserInfo(userResponse.data);
+
       console.log('Inicio de sesión exitoso');
       navigate('/', { state: { isLoggedIn: true } });
     } catch (error) {

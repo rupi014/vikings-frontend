@@ -57,7 +57,7 @@ const Cesta = () => {
 
                 console.log('Pedido realizado');
                 vaciarCesta(); // Vaciar la cesta
-                navigate('/perfil'); // Redirigir a la página de perfil
+                navigate('/pago'); // Redirigir a la página de pago
             } catch (error) {
                 console.error('Error al realizar el pedido:', error);
                 alert('Hubo un error al realizar el pedido.');

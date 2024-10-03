@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { CestaContext } from '../context/cesta-context';
@@ -11,18 +11,31 @@ const Perfil = () => {
   const [orderProducts, setOrderProducts] = useState([]);
   const [productNames, setProductNames] = useState({});
 
+  // Use useCallback to memorize handleLogout
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    setUser(null);
+    setUserInfo(null);
+    navigate('/login');
+  }, [navigate, setUser, setUserInfo]);
+
   useEffect(() => {
-    const fetchUserInfo = async () => {
+    const verifyToken = async () => {
       try {
         const token = localStorage.getItem('token');
+        if (!token) throw new Error('Token no encontrado');
+
         const response = await axios.get('https://vikingsdb.up.railway.app/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
         setUserInfo(response.data);
       } catch (error) {
-        console.error('Error fetching user info:', error);
+        console.error('Error verifying token:', error);
+        handleLogout(); // Desloguear si el token no es válido
       }
     };
 
@@ -43,17 +56,9 @@ const Perfil = () => {
     if (userInfo) {
       fetchUserOrders();
     } else {
-      fetchUserInfo();
+      verifyToken();
     }
-  }, [setUserInfo, userInfo]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userName');
-    setUser(null);
-    setUserInfo(null);
-    navigate('/login');
-  };
+  }, [setUserInfo, userInfo, handleLogout]);
 
   const handleViewProducts = async (orderId) => {
     try {
@@ -66,7 +71,6 @@ const Perfil = () => {
       const products = response.data;
       setOrderProducts(products);
 
-      // Fetch product names
       const productNamesTemp = {};
       for (const product of products) {
         const productResponse = await axios.get(`https://vikingsdb.up.railway.app/products/${product.product_id}`, {
