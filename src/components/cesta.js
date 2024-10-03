@@ -5,7 +5,7 @@ import { CestaContext } from '../context/cesta-context';
 import '../components/styles/cesta.css';
 
 const Cesta = () => {
-    const { cesta, removeFromCesta, updateCantidad, vaciarCesta, isAuthenticated, userInfo } = useContext(CestaContext);
+    const { cesta, removeFromCesta, vaciarCesta, isAuthenticated, userInfo } = useContext(CestaContext);
     const navigate = useNavigate();
 
     const handleRealizarPedido = async () => {
@@ -44,7 +44,8 @@ const Cesta = () => {
                         order_id: orderId,
                         quantity: producto.cantidad,
                         price: producto.price,
-                        total: producto.price * producto.cantidad
+                        total: producto.price * producto.cantidad,
+                        order_size: producto.talla || "Talla Única"
                     }, {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -74,13 +75,8 @@ const Cesta = () => {
                             <img src={producto.image} alt={producto.name} className="producto-cesta-imagen" />
                             <h2 className="producto-cesta-nombre">{producto.name}</h2>
                             <p className="producto-cesta-precio">{producto.price.toFixed(2)} €</p>
-                            <input
-                                type="number"
-                                min="1"
-                                value={producto.cantidad}
-                                onChange={(e) => updateCantidad(producto.id, parseInt(e.target.value))}
-                                className="producto-cantidad"
-                            />
+                            <p className="producto-cesta-talla">Talla: {producto.talla || "Talla Única"}</p>
+                            <p className="producto-cesta-cantidad">Cantidad: {producto.cantidad}</p>
                             <button className="producto-cesta-boton" onClick={() => removeFromCesta(producto.id)}>Eliminar</button>
                         </div>
                     ))}

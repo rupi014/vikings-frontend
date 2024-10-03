@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const CestaContext = createContext();
 
@@ -7,16 +7,26 @@ export const CestaProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
-  const addToCesta = (producto, cantidad) => {
+  useEffect(() => {
+    const storedUser = localStorage.getItem('userName');
+    const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+    if (storedUserInfo) {
+      setUserInfo(storedUserInfo);
+    }
+  }, []);
+
+  const addToCesta = (producto) => {
     setCesta((prevCesta) => {
-      const existingProduct = prevCesta.find(item => item.id === producto.id);
-      if (existingProduct) {
-        return prevCesta.map(item =>
-          item.id === producto.id ? { ...item, cantidad: item.cantidad + cantidad } : item
+      const productoExistente = prevCesta.find((p) => p.id === producto.id);
+      if (productoExistente) {
+        return prevCesta.map((p) =>
+          p.id === producto.id ? { ...p, cantidad: p.cantidad + producto.cantidad } : p
         );
-      } else {
-        return [...prevCesta, { ...producto, cantidad }];
       }
+      return [...prevCesta, producto];
     });
   };
 

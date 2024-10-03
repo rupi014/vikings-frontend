@@ -131,6 +131,7 @@ const Perfil = () => {
                   <th>Producto ID</th>
                   <th>Nombre</th>
                   <th>Cantidad</th>
+                  <th>Talla</th>
                   <th>Precio</th>
                 </tr>
               </thead>
@@ -140,6 +141,7 @@ const Perfil = () => {
                     <td>{product.product_id}</td>
                     <td>{productNames[product.product_id] || 'Cargando...'}</td>
                     <td>{product.quantity}</td>
+                    <td>{product.order_size}</td>
                     <td>{product.price.toFixed(2)} €</td>
                   </tr>
                 ))}

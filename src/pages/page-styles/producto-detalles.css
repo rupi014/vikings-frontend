@@ -1,0 +1,79 @@
+.producto-detalles-page {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../../assets/images/fondos/contact-fondo.webp');
+  background-size: cover;
+  background-position: center;
+} 
+
+.producto-detalles-container {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px;
+  background-color: #1a1a1a;
+  color: #ffd700;
+  border-radius: 10px;
+
+}
+
+.producto-detalles-izquierda {
+  grid-column: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.producto-detalles-imagen {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.producto-detalles-descripcion {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  max-width: 400px;
+}
+
+.producto-detalles-derecha {
+  grid-column: 2;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.producto-detalles-nombre {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.producto-detalles-precio {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.producto-detalles-opciones label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.producto-detalles-boton {
+  background-color: #ffd700;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.producto-detalles-boton:hover {
+  background-color: #e6b800;
+}

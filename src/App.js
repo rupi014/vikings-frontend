@@ -16,6 +16,7 @@ import Footer from './components/footer';
 import Cesta from './components/cesta';
 import Login from './pages/login';
 import Perfil from './pages/perfil';
+import ProductoDetalles from './pages/producto-detalles';
 import './App.css';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/cesta" element={<Cesta />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/producto/:id" element={<ProductoDetalles />} />
         </Routes>
         <Footer />
       </div>
