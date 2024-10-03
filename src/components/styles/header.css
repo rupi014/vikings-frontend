@@ -7,7 +7,8 @@
     background-image: url('../../assets/images/fondos/header-fondo.webp');
     background-size: cover;
     background-position: center;
-    height: 100px; /* Ajusta la altura del header según tus necesidades */
+    height: 100px;
+    box-shadow: inset 0px 0px 6px 0px rgba(0, 0, 0, 1);
   }
   
   .logo {
