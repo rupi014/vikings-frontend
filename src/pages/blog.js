@@ -12,6 +12,8 @@ Modal.setAppElement('#root');
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
+  const [visibleBlogs, setVisibleBlogs] = useState(3); // Número inicial de blogs visibles
+  const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [newBlog, setNewBlog] = useState({ title: '', content: '', image: '' });
   const [imageFile, setImageFile] = useState(null);
@@ -29,7 +31,28 @@ const BlogList = () => {
       .catch(error => {
         console.error('Error fetching blogs:', error);
       });
-  }, []);
+
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100 && !loading) {
+        setLoading(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [loading]);
+
+  useEffect(() => {
+    if (!loading) return;
+    if (visibleBlogs >= blogs.length) return;
+
+    const loadMoreBlogs = () => {
+      setVisibleBlogs((prevVisibleBlogs) => prevVisibleBlogs + 3);
+      setLoading(false);
+    };
+
+    loadMoreBlogs();
+  }, [loading, visibleBlogs, blogs.length]);
 
   const handleBlogClick = (id) => {
     navigate(`/blog/${id}`);
@@ -106,11 +129,11 @@ const BlogList = () => {
 
   return (
     <div className="blog-list-page">
+      <div className="blog-list">
       {isLoggedIn && (
         <button onClick={openModal} className="create-blog-button">Crear Blog</button>
       )}
-      <div className="blog-list">
-        {blogs.map(blog => (
+        {blogs.slice(0, visibleBlogs).map(blog => (
           <div key={blog.id} className="blog-item">
             <img 
               src={blog.image} 
@@ -134,7 +157,6 @@ const BlogList = () => {
           </div>
         ))}
       </div>
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -154,7 +176,6 @@ const BlogList = () => {
               <ReactQuill 
                 value={newBlog.content} 
                 onChange={handleContentChange} 
-
               />
             </div>
           </label>
