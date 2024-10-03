@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 import '../components/styles/blog_detalles.css';
 
 const BlogDetalles = () => {
@@ -24,7 +25,7 @@ const BlogDetalles = () => {
         <div className="blog-detalles">
       <h1 className="blog-detalles-title">{blog.title}</h1>
       <img src={blog.image} alt={blog.title} className="blog-detalles-image" />
-      <p className="blog-detalles-content">{blog.content}</p>
+      <p className="blog-detalles-content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }} />
     </div>
     </div>
   );
