@@ -9,7 +9,6 @@ import Casters from './pages/casters';
 import CreadoresContenido from './pages/creadores-contenido';
 import SeccionContenido from './pages/seccion-contenido';
 import Directiva from './pages/directiva';
-import Blog from './pages/blog';
 import Contact from './pages/contact';
 import Tienda from './pages/tienda';
 import Footer from './components/footer';
@@ -18,6 +17,8 @@ import Login from './pages/login';
 import Perfil from './pages/perfil';
 import ProductoDetalles from './pages/producto-detalles';
 import Pago from './pages/pago';
+import Blogs from './pages/blog';
+import BlogDetalles from './components/blog_detalles';
 import './App.css';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
           <Route path="/creadores-de-contenido" element={<CreadoresContenido />} />
           <Route path="/seccion-de-contenido" element={<SeccionContenido />} />
           <Route path="/directiva" element={<Directiva />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/tienda" element={<Tienda />} />
           <Route path="/cesta" element={<Cesta />} /> 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/producto/:id" element={<ProductoDetalles />} />
           <Route path="/pago" element={<Pago />} />
+          <Route path="/blog/:id" element={<BlogDetalles />} />
         </Routes>
         <Footer />
       </div>

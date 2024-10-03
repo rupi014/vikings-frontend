@@ -1,0 +1,42 @@
+.blog-detalles-page {
+    background-image: url('../../assets/images/fondos/contact-fondo.webp');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.blog-detalles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;   
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-detalles-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .blog-detalles-image {
+    width: 70%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .blog-detalles-content {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+  }
