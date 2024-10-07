@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import ReactQuill from 'react-quill';
+import { Editor } from '@tinymce/tinymce-react'; // Importa el editor de TinyMCE
 import DOMPurify from 'dompurify';
-import 'react-quill/dist/quill.snow.css'; // Importa los estilos de Quill
 import '../pages/page-styles/blogs.css';
 
 // Configura el elemento de la aplicación para react-modal
@@ -173,9 +172,22 @@ const BlogList = () => {
           <label>
             Contenido:
             <div className="editor">
-              <ReactQuill 
-                value={newBlog.content} 
-                onChange={handleContentChange} 
+              <Editor
+                apiKey="8hyhnh1u0q899xxtr0m8zplw4s64u66kswnewdj3smav0kj1" 
+                value={newBlog.content}
+                onEditorChange={handleContentChange}
+                init={{
+                  height: 500,
+                  menubar: false,
+                  plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                  ],
+                  toolbar: `undo redo | styles | formatselect | bold italic backcolor | \
+                  alignleft aligncenter alignright alignjustify | \
+                  bullist numlist outdent indent | removeformat | help`
+                }}
               />
             </div>
           </label>
