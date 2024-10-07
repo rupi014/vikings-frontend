@@ -5,9 +5,13 @@ import { CestaContext } from '../context/cesta-context';
 import '../components/styles/cesta.css';
 
 const Cesta = () => {
-    const { cesta, removeFromCesta, vaciarCesta, isAuthenticated, userInfo } = useContext(CestaContext);
+    const { cesta, updateCantidad, removeFromCesta, vaciarCesta, isAuthenticated, userInfo } = useContext(CestaContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+
+    const handleCantidadChange = (productoId, nuevaCantidad) => {
+        updateCantidad(productoId, nuevaCantidad);
+    };
 
     const handleRealizarPedido = async () => {
         if (!isAuthenticated()) {
@@ -81,7 +85,13 @@ const Cesta = () => {
                             <h2 className="producto-cesta-nombre">{producto.name}</h2>
                             <p className="producto-cesta-precio">{producto.price.toFixed(2)} €</p>
                             <p className="producto-cesta-talla">Talla: {producto.talla || "Talla Única"}</p>
-                            <p className="producto-cesta-cantidad">Cantidad: {producto.cantidad}</p>
+                            <input
+                                type="number"
+                                min="1"
+                                value={producto.cantidad}
+                                onChange={(e) => handleCantidadChange(producto.id, parseInt(e.target.value))}
+                                className="producto-cesta-cantidad-input"
+                            />
                             <button className="producto-cesta-boton" onClick={() => removeFromCesta(producto.id)}>Eliminar</button>
                         </div>
                     ))}

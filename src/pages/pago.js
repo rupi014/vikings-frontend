@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CestaContext } from '../context/cesta-context';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './page-styles/pago.css';
 
@@ -35,12 +36,12 @@ const Pago = () => {
             )}
         </div>
         <div className="pago-total">
-            <p>Total: {totalAmount} €</p>
+            <p>Total: {totalAmount.toFixed(2)} €</p>
         </div>
         <PayPalScriptProvider 
             options={{ 
                 "client-id": "AfvD3MxmCdNpIpy7v5TXHE1mWbYUSHf0uvV_E7OkGBVzWht18ymA5cwXx1CCoYGr2uR2_tvjothHBUQU",
-                currency: "EUR", // Asegúrate de que la moneda esté configurada aquí
+                currency: "EUR",
                 intent: "capture",
             }}>
 
@@ -50,7 +51,7 @@ const Pago = () => {
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: totalAmount.toFixed(2), // Total del pedido
+                    value: totalAmount.toFixed(2),
                     currency_code: 'EUR'
                   }
                 }]
