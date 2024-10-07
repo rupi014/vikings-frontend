@@ -71,6 +71,7 @@ const Login = () => {
           required
         />
         <button type="submit">Iniciar Sesión</button>
+        <p>Si no tienes cuenta, <a href="/registro">regístrate aquí</a></p>
       </form>
     </div>
   );

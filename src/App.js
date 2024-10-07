@@ -18,7 +18,8 @@ import Perfil from './pages/perfil';
 import ProductoDetalles from './pages/producto-detalles';
 import Pago from './pages/pago';
 import Blogs from './pages/blog';
-import BlogDetalles from './components/blog_detalles';
+import BlogDetalles from './components/blog_detalles';  
+import Registro from './pages/registro';
 import './App.css';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/producto/:id" element={<ProductoDetalles />} />
           <Route path="/pago" element={<Pago />} />
           <Route path="/blog/:id" element={<BlogDetalles />} />
+          <Route path="/registro" element={<Registro />} />
         </Routes>
         <Footer />
       </div>
