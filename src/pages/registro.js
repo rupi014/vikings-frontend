@@ -36,15 +36,55 @@ const Registro = () => {
       <form className="registro-form" onSubmit={handleSubmit}>
         <h2>Registro</h2>
         <label>Usuario:</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} required />
+        <input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          autoComplete="username"
+          placeholder="Nombre de usuario"
+        />
         <label>Contraseña:</label>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          autoComplete="new-password"
+          placeholder="Contraseña"
+        />
         <label>Email:</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          autoComplete="email"
+          placeholder="Email"
+        />
         <label>Teléfono:</label>
-        <input type="text" name="telephone" value={formData.telephone} onChange={handleChange} required />
+        <input
+          type="text"
+          name="telephone"
+          value={formData.telephone}
+          onChange={handleChange}
+          required
+          autoComplete="tel"
+          placeholder="Teléfono"
+        />
         <label>Dirección:</label>
-        <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+          autoComplete="street-address"
+          placeholder="Dirección"
+        />
         <button type="submit">Registrar</button>
       </form>
     </div>

@@ -61,6 +61,8 @@ const Login = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          autoComplete="username"
+          placeholder="Usuario" 
         />
         <label htmlFor="password">Contraseña:</label>
         <input
@@ -69,6 +71,8 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          autoComplete="current-password"
+          placeholder="Contraseña"
         />
         <button type="submit">Iniciar Sesión</button>
         <p>Si no tienes cuenta, <a href="/registro">regístrate aquí</a></p>
