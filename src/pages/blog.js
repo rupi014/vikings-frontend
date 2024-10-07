@@ -173,7 +173,7 @@ const BlogList = () => {
             Contenido:
             <div className="editor">
               <Editor
-                apiKey="8hyhnh1u0q899xxtr0m8zplw4s64u66kswnewdj3smav0kj1" 
+                apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
                 value={newBlog.content}
                 onEditorChange={handleContentChange}
                 init={{
