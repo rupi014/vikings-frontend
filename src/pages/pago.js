@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { CestaContext } from '../context/cesta-context';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import './page-styles/pago.css';
 

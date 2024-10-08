@@ -5,6 +5,7 @@ import './page-styles/tienda.css';
 
 const Tienda = () => {
   const [productos, setProductos] = useState([]);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
 
   useEffect(() => {
     fetch('https://vikingsdb.up.railway.app/products/')
@@ -13,18 +14,28 @@ const Tienda = () => {
       .catch(error => console.error('Error fetching products:', error));
   }, []);
 
+  const filtrarProductos = () => {
+    if (categoriaSeleccionada === 'todos') {
+      return productos;
+    } else if (categoriaSeleccionada === 'ropa') {
+      return productos.filter(producto => producto.category === 'ropa');
+    } else if (categoriaSeleccionada === 'accesorios') {
+      return productos.filter(producto => producto.category === 'accesorios');
+    }
+  };
+
   return (
     <div className="tienda-container">
       <div className="filtros">
         <h2>Explorar por</h2>
-        <a href="/tienda">Todos los productos</a>
-        <a href="/tienda/ropa">Ropa</a>
-        <a href="/tienda/accesorios">Accesorios</a>
+        <button className='button-filter' onClick={() => setCategoriaSeleccionada('todos')}>Todos los productos</button>
+        <button className='button-filter' onClick={() => setCategoriaSeleccionada('ropa')}>Ropa</button>
+        <button className='button-filter' onClick={() => setCategoriaSeleccionada('accesorios')}>Accesorios</button>
       </div>
       <div className="productos-container">
-        <img src={TiendaBanner} alt="Tienda" /> 
+        <img className='tienda-banner-img' src={TiendaBanner} alt="Tienda" /> 
         <div className="productos">
-          {productos.map(producto => (
+          {filtrarProductos().map(producto => (
             <Producto key={producto.id} producto={producto} />
           ))}
         </div>

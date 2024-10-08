@@ -1,9 +1,9 @@
-/* src/pages/page-styles/tienda.css */
 .tienda-container {
   display: grid;
   grid-template-columns: 1fr 6fr;
   background-color: #333;
   color: #ffcc00;
+  width: 100%;  
 }
 
 .filtros {
@@ -27,8 +27,18 @@
   text-decoration: underline;
 }
 
+.button-filter {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+} 
+
+
 .productos-container {
-  margin-bottom: 50px;
   padding: 20px;
 }
 
@@ -37,4 +47,47 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   justify-items: center;
+  margin-top: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .tienda-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .filtros {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .productos {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .tienda-container {
+    width: 100%;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tienda-banner-img {
+    width: 100%;
+  }
+
+  .productos-container {
+    padding: 0px;
+    margin-bottom: 30px;
+  }
+
+  .productos {
+    grid-template-columns: 1fr; 
+  }
 }
