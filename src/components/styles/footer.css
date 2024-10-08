@@ -18,7 +18,7 @@
 
 .footer-vikings-logo {
   position: absolute;
-  top: -80px; 
+  top: -20px; 
   left: 50%;
   transform: translateX(-50%);
   z-index: 2; 
@@ -67,7 +67,7 @@
   }
 
   .footer-vikings-logo img {
-    height: 150px; /* Ajusta el tamaño del logo */
+    height: 30px; /* Ajusta el tamaño del logo */
   }
 
   .footer-kong-logo img {

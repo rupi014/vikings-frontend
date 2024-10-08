@@ -7,7 +7,7 @@ import tiktok from '../assets/images/icons/tiktok.webp';
 import discord from '../assets/images/icons/discord.webp';
 import youtube from '../assets/images/icons/youtube.png';   
 import kong from '../assets/images/logos/kong.webp';
-import viking from '../assets/images/logos/vikings.webp';
+import viking from '../assets/images/logos/vikings.png';
 
 const Footer = () => {
   return (
