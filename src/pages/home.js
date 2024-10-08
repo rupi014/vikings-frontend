@@ -1,11 +1,11 @@
 import React from 'react';
 import '../pages/page-styles/home.css';
+import Banner from '../components/banner';
 
 const Home = () => {
   return (
     <div className="home-page">
-      <h1 className="home-title">Bienvenido a la página de inicio</h1>
-      <p className="home-description">Esta es la página de inicio de nuestro sitio web.</p>
+      <Banner className="first-container"/>
     </div>
   );
 };
