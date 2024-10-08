@@ -11,4 +11,10 @@
     margin-top: 0; /* Asegúrate de que no haya margen superior */
 }
 
+@media (max-width: 768px) {
+  .home-page {
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+  }
+}
+
   

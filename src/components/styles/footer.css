@@ -59,3 +59,29 @@
   border-radius: 50%;
   padding: 5px;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px;
+  }
+
+  .footer-vikings-logo img {
+    height: 150px; /* Ajusta el tamaño del logo */
+  }
+
+  .footer-kong-logo img {
+    height: 60px;
+    margin-right: 20px;
+  }
+
+  .footer-social {
+    flex-direction: row;
+    margin-right: 0;
+  }
+
+  .footer-social img {
+    height: 30px;
+    width: 30px;
+  }
+}

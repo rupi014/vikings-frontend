@@ -1,0 +1,54 @@
+.promo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    box-shadow: inset 0px 0px 10px 0px #ffcc00;
+  }
+  
+  .promo-persona {
+    width: 210px;
+    margin-left: 50px;
+  }
+  
+  .promo-content {
+    max-width: 800px;
+  }
+
+  .promo-content p {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .promo-camiseta {
+    width: 350px;
+  }
+  
+  .promo-button {
+    background-color: #f0c000;
+    border: none;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .promo {
+      flex-direction: column;
+    }
+  
+    .promo-persona,
+    .promo-camiseta {
+      width: 150px; /* Ajusta el tamaño de las imágenes */
+      margin: 10px 0;
+    }
+  
+    .promo-content p {
+      font-size: 1.5em; /* Ajusta el tamaño del texto */
+    }
+  }

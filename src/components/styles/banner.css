@@ -37,3 +37,22 @@
     margin-right: -100px;
   }
 
+
+  @media (max-width: 768px) {
+    .banner {
+      height: 300px; /* Ajusta la altura para pantallas más pequeñas */
+    }
+
+    .video-background {
+        height: 300px; /* Ajusta la altura para pantallas más pequeñas */
+    }
+  
+    .banner-image1,
+    .banner-image2,
+    .banner-logo {
+      width: 100px; /* Ajusta el tamaño de las imágenes */
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
