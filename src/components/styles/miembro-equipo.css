@@ -26,3 +26,18 @@
   font-weight: bold;
   color: #fff;
 }
+
+.miembro-equipo-bio {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #fff;
+} 
+
+.miembro-equipo a {
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffca00;
+  cursor: pointer;
+} 
+
