@@ -102,7 +102,7 @@
 @media (max-width: 480px) {
   .cesta-container {
     padding: 10px;
-    height: auto;
+    height: 100%;
   }
 
   .productos-cesta {
