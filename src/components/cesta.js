@@ -95,11 +95,13 @@ const Cesta = () => {
                             <button className="producto-cesta-boton" onClick={() => removeFromCesta(producto.id)}>Eliminar</button>
                         </div>
                     ))}
-                    <button className="realizar-pedido-boton" onClick={handleRealizarPedido} disabled={loading}>
-                        {loading ? 'Realizando Pedido' : 'Realizar Pedido'}
-                    </button>
                 </div>
             )}
+            <div className="boton-container">
+                <button className="realizar-pedido-boton" onClick={handleRealizarPedido} disabled={loading}>
+                    {loading ? 'Realizando Pedido' : 'Realizar Pedido'}
+                </button>
+            </div>
         </div>
     );
 };

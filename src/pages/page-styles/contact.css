@@ -27,21 +27,17 @@
 
 .form-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
-.form-group input {
-  width: 48%;
-}
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
+  width: 94%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ffd700;
   background-color: #444;
-  color: #fff;
 }
 
 .contact-form button {
