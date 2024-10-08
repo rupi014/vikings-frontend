@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* Cambiado a flex-start para alinear al inicio */
-    height: 100vh;
     background-image: url('../../assets/images/fondos/contact-fondo.webp');
     background-size: cover;
     background-position: center;

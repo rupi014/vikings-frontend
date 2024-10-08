@@ -47,12 +47,23 @@
         height: 300px; /* Ajusta la altura para pantallas más pequeñas */
     }
   
-    .banner-image1,
-    .banner-image2,
+    .banner-image1 {
+      width: 220px; /* Ajusta el tamaño de las imágenes */
+      margin-left: -80px;
+      margin-right: -100px;
+      margin-top: 150px;
+    }
+
+    .banner-image2 {
+      width: 110px; /* Ajusta el tamaño de las imágenes */
+      margin-left: -150px;
+      margin-top: 150px;
+    }
+
     .banner-logo {
-      width: 100px; /* Ajusta el tamaño de las imágenes */
+      width: 300px; /* Ajusta el tamaño de las imágenes */
       margin-left: 0;
-      margin-right: 0;
+      margin-right: 110px;
     }
   }
 
