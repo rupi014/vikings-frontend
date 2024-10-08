@@ -22,9 +22,6 @@ const Header = () => {
       <div className="logo">
         <img src={HeaderLogo} alt="Logo" />
       </div>
-      <button className="menu-toggle" onClick={toggleMenu}>
-        ☰
-      </button>
       <nav className={`nav ${menuOpen ? 'active' : ''}`}>
         <ul>
           <li><Link to="/" onClick={closeMenu}>INICIO</Link></li>
@@ -54,6 +51,9 @@ const Header = () => {
           <span className="cart-icon">🛒</span>
           <span className="cart-count">{getCestaCount()}</span>
         </Link>
+        <button className="menu-toggle" onClick={toggleMenu}>
+        ☰
+      </button>
       </div>
     </header>
   );
