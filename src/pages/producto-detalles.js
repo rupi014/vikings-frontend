@@ -81,7 +81,7 @@ const ProductoDetalles = () => {
                 type="number"
                 min="1"
                 value={cantidad}
-                onChange={(e) => setCantidad(parseInt(e.target.value, 10) || 1)}
+                onChange={(e) => setCantidad(parseInt(e.target.value, 10))}
               />
             </label>
           </div>
