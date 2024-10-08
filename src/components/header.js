@@ -26,7 +26,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={HeaderLogo} alt="Logo" />
+        <Link to="/" onClick={closeMenu}>
+          <img src={HeaderLogo} alt="Logo" />
+        </Link>
       </div>
       <nav className={`nav ${menuOpen ? 'active' : ''}`}>
         <ul>
