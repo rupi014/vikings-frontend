@@ -16,10 +16,13 @@ const Equipos = () => {
     <div className="equipos-container">
       <h1>Equipos</h1>
       <div className="equipos-grid">
-        {miembros
-          .map(miembro => (
+        {miembros.length > 0 ? (
+          miembros.map(miembro => (
             <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} />
-          ))}
+          ))
+        ) : (
+          <p>PROXIMAMENTE</p>
+        )}
       </div>
     </div>
   );

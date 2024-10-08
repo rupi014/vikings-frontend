@@ -11,3 +11,8 @@
   justify-content: center;
   gap: 20px;
 }
+
+.equipos-grid p {
+  font-size: 40px;  
+  color: #ffcc00;
+}
