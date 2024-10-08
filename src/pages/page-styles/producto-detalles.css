@@ -41,9 +41,9 @@
 }
 
 .producto-detalles-derecha {
-  grid-column: 2;
   padding: 20px;
   border-radius: 8px;
+  
 }
 
 .producto-detalles-nombre {
@@ -58,8 +58,10 @@
 }
 
 .producto-detalles-opciones label {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
+  width: 10%;
   font-size: 14px;
   color: #fff;
 }
@@ -149,5 +151,6 @@
   .producto-detalles-boton {
     padding: 10px 20px;
     font-size: 14px;
+    cursor: pointer;
   }
 }
