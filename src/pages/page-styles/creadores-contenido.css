@@ -7,11 +7,39 @@
   background-color: #333;
   color: #ffca00;
   padding: 20px;
-  height: 100%;
+  height: 100vh;
 }
 
 .creadores-contenido-grid {
   display: flex;
   justify-content: center;
   gap: 20px;
+  height: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .creadores-contenido-container {
+    padding: 15px;
+    height: auto;
+  }
+
+  .creadores-contenido-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    height: 100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .creadores-contenido-container {
+    padding: 10px;
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .creadores-contenido-grid {
+    gap: 10px;
+  }
 }

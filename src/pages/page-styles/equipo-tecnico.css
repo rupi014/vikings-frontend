@@ -32,3 +32,30 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .equipo-tecnico-container {
+    padding: 15px;
+    height: auto;
+  }
+
+  .equipo-tecnico-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    height: 100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .equipo-tecnico-container {
+    padding: 10px;
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .equipo-tecnico-grid {
+    gap: 10px;
+  }
+}
