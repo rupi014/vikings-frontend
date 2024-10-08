@@ -6,6 +6,7 @@ import HeaderLogo from '../assets/images/logos/header-logo.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [subMenuOpen, setSubMenuOpen] = useState(false); // Nuevo estado para el submenú
   const { getCestaCount, user } = useContext(CestaContext);
   const navigate = useNavigate();
 
@@ -13,8 +14,13 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const toggleSubMenu = () => {
+    setSubMenuOpen(!subMenuOpen);
+  };
+
   const closeMenu = () => {
     setMenuOpen(false);
+    setSubMenuOpen(false); // Cierra también el submenú
   };
 
   return (
@@ -26,15 +32,17 @@ const Header = () => {
         <ul>
           <li><Link to="/" onClick={closeMenu}>INICIO</Link></li>
           <li className="dropdown">
-            <Link to="/equipos" onClick={closeMenu}>VIKINGS</Link>
-            <div className="dropdown-content">
-              <Link to="/equipos" onClick={closeMenu}>EQUIPOS</Link>
-              <Link to="/equipo-tecnico" onClick={closeMenu}>EQUIPO TECNICO</Link>
-              <Link to="/casters" onClick={closeMenu}>CASTERS</Link>
-              <Link to="/creadores-de-contenido" onClick={closeMenu}>CREADORES DE CONTENIDO</Link>
-              <Link to="/seccion-de-contenido" onClick={closeMenu}>SECCIÓN DE CONTENIDO</Link>
-              <Link to="/directiva" onClick={closeMenu}>DIRECTIVA</Link>
-            </div>
+            <span onClick={toggleSubMenu}>VIKINGS</span> {/* Cambiado a span para manejar el clic */}
+            {subMenuOpen && (
+              <div className="dropdown-content">
+                <Link to="/equipos" onClick={closeMenu}>EQUIPOS</Link>
+                <Link to="/equipo-tecnico" onClick={closeMenu}>EQUIPO TECNICO</Link>
+                <Link to="/casters" onClick={closeMenu}>CASTERS</Link>
+                <Link to="/creadores-de-contenido" onClick={closeMenu}>CREADORES DE CONTENIDO</Link>
+                <Link to="/seccion-de-contenido" onClick={closeMenu}>SECCIÓN DE CONTENIDO</Link>
+                <Link to="/directiva" onClick={closeMenu}>DIRECTIVA</Link>
+              </div>
+            )}
           </li>
           <li><Link to="/blog" onClick={closeMenu}>BLOG</Link></li>
           <li><Link to="/contact" onClick={closeMenu}>CONTACTO</Link></li>
@@ -52,8 +60,8 @@ const Header = () => {
           <span className="cart-count">{getCestaCount()}</span>
         </Link>
         <button className="menu-toggle" onClick={toggleMenu}>
-        ☰
-      </button>
+          ☰
+        </button>
       </div>
     </header>
   );
