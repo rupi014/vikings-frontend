@@ -14,7 +14,7 @@
 /*  Media queries */
 @media (max-width: 768px) {
     .carousel-container {
-      width: 100%;
+      width: 80%;
     }
   }
   

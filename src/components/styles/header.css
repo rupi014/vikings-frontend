@@ -113,10 +113,13 @@
   /* Media Queries */
   @media (max-width: 768px) {
 
-    .header {
-      padding: 0 10px; /* Ajusta el padding para pantallas más pequeñas */
+    .header { 
       height: 100%;
       
+    }
+
+    .logo {
+      height: 70%;
     }
 
     .nav {
@@ -155,5 +158,23 @@
     .nav a {
       padding: 10px;
       text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      padding: 0 5px;
+    }
+  
+    .menu-toggle {
+      font-size: 20px;
+    }
+  
+    .nav a {
+      font-size: 14px;
+    }
+  
+    .user-greeting {
+      font-size: 1rem;
     }
   }

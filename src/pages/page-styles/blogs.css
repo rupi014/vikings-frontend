@@ -138,9 +138,50 @@
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: white;
+    background-color: #ffdd00;
+    color: black;
     cursor: pointer;
+  }
+
+
+/* Media Queries */
+  @media (max-width: 768px) {
+    .blog-item {
+      flex-direction: column;
+      width:  95%;
+    }
+  
+    .blog-image {
+      width: 100%;
+      height: 200px;
+    }
+  
+    .blog-content {
+      text-align: center; 
+      width: 85%;
+    }
+  
+    .blog-title {
+      font-size: 20px;
+    }
+  
+    .blog-content-excerpt {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .blog-title {
+      font-size: 18px;
+    }
+  
+    .blog-content-excerpt {
+      font-size: 12px;
+    }
+  
+    .modal {
+      width: 95%;
+    }
   }
   
 

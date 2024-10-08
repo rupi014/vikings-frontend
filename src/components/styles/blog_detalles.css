@@ -39,3 +39,38 @@
     color: #555;
     line-height: 1.6;
   }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .blog-detalles {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .blog-detalles-title {
+    font-size: 28px;
+  }
+
+  .blog-detalles-image {
+    width: 90%;
+  }
+
+  .blog-detalles-content {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-detalles {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .blog-detalles-title {
+    font-size: 24px;
+  }
+
+  .blog-detalles-content {
+    font-size: 14px;
+  }
+}
