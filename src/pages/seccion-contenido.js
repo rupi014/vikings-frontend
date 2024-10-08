@@ -19,7 +19,7 @@ const SeccionContenido = () => {
         {miembros
           .filter(miembro => miembro.role.toLowerCase() === 'sección de contenido')
           .map(miembro => (
-            <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} />
+            <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} bio={miembro.bio} twitter={miembro.twitter} />
           ))}
       </div>
     </div>

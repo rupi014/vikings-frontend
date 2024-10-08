@@ -19,7 +19,7 @@ const EquipoTecnico = () => {
         {miembros
         .filter(miembro => miembro.role === 'Equipo Técnico')
         .map(miembro => (
-          <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} />
+          <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} twitter={miembro.twitter} bio={miembro.bio} />
         ))}
       </div>
     </div>

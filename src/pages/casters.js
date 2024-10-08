@@ -19,7 +19,7 @@ const Casters = () => {
         {miembros
           .filter(miembro => miembro.role.toLowerCase() === 'caster')
           .map(miembro => (
-            <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} />
+            <MiembroEquipo key={miembro.id} name={miembro.name} image={miembro.image} twitter={miembro.twitter} bio={miembro.bio}   />
           ))}
       </div>
     </div>

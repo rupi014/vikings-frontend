@@ -1,8 +1,12 @@
 .creadores-contenido-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   background-color: #333;
-  color: #ffcc00;
-  padding: 20px;  
+  color: #ffca00;
+  padding: 20px;
   height: 100%;
 }
 
