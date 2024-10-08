@@ -10,6 +10,7 @@ const Perfil = () => {
   const [userOrders, setUserOrders] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
   const [productNames, setProductNames] = useState({});
+  const [visibleOrderId, setVisibleOrderId] = useState(null); // Estado para controlar la visibilidad de la tabla
 
   // Use useCallback to memorize handleLogout
   const handleLogout = useCallback(() => {
@@ -61,6 +62,11 @@ const Perfil = () => {
   }, [setUserInfo, userInfo, handleLogout]);
 
   const handleViewProducts = async (orderId) => {
+    if (visibleOrderId === orderId) {
+      setVisibleOrderId(null); // Oculta la tabla si ya está visible
+      return;
+    }
+
     try {
       const token = localStorage.getItem('token');
       const response = await axios.get(`https://vikingsdb.up.railway.app/products_order/${orderId}`, {
@@ -81,6 +87,7 @@ const Perfil = () => {
         productNamesTemp[product.product_id] = productResponse.data.name;
       }
       setProductNames(productNamesTemp);
+      setVisibleOrderId(orderId); // Muestra la tabla para el pedido actual
     } catch (error) {
       console.error('Error fetching order products:', error);
     }
@@ -120,13 +127,15 @@ const Perfil = () => {
                 <td>{order.total_price.toFixed(2)} €</td>
                 <td>{order.status}</td>
                 <td>
-                  <button onClick={() => handleViewProducts(order.id)}>Ver Productos</button>
+                  <button onClick={() => handleViewProducts(order.id)}>
+                    {visibleOrderId === order.id ? 'Ocultar Productos' : 'Ver Productos'}
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {orderProducts.length > 0 && (
+        {visibleOrderId && orderProducts.length > 0 && (
           <div className="order-products">
             <h3>Productos del Pedido</h3>
             <table>
