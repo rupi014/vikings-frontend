@@ -78,3 +78,52 @@
 .realizar-pedido-boton:hover {
     background-color: #e6b800;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .cesta-container {
+    padding: 15px;
+    height: auto;
+  }
+
+  .productos-cesta {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .producto-cesta-nombre {
+      font-size: 14px;
+  }
+
+  .producto-cesta-precio {
+      font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cesta-container {
+    padding: 10px;
+    height: auto;
+  }
+
+  .productos-cesta {
+      grid-template-columns: 1fr;
+  }
+
+  .producto-cesta {
+      padding: 8px;
+  }
+
+  .producto-cesta-nombre {
+      font-size: 12px;
+  }
+
+  .producto-cesta-precio {
+      font-size: 10px;
+  }
+
+  .realizar-pedido-boton {
+      padding: 10px 15px;
+      font-size: 14px;
+      margin-bottom: 40px;
+  }
+}
