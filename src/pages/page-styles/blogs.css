@@ -178,9 +178,9 @@
     .blog-content-excerpt {
       font-size: 12px;
     }
-  
-    .modal {
-      width: 95%;
+
+    .modal-overlay {
+      position: relative;
     }
   }
   

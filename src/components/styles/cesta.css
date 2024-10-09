@@ -2,9 +2,15 @@
     padding: 20px;
     background-color: #333;
     color: #ffcc00;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.cesta-container p {
+    color: #ffcc00;
+    font-size: 16px;
+    text-align: center;
 }
 
 .productos-cesta {
@@ -91,7 +97,7 @@
 @media (max-width: 768px) {
   .cesta-container {
     padding: 15px;
-    height: auto;
+    height: 100%;
   }
 
   .productos-cesta {
@@ -110,7 +116,7 @@
 @media (max-width: 480px) {
   .cesta-container {
     padding: 10px;
-    height: 100%;
+    height: auto;
   }
 
   .productos-cesta {
