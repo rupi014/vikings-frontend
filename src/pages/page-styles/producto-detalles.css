@@ -117,7 +117,7 @@
 @media (max-width: 480px) {
   .producto-detalles-page {
     padding: 10px;
-    height: 100%;
+    height: auto;
   }
 
   .producto-detalles-container {
@@ -152,5 +152,14 @@
     padding: 10px 20px;
     font-size: 14px;
     cursor: pointer;
+  }
+
+  .producto-detalles-opciones label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 30%;
+    font-size: 14px;
+    color: #fff;
   }
 }

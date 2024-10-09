@@ -24,7 +24,7 @@
   
   .producto-precio {
     font-size: 14px;
-    color: #ccc;
+    color: white;
   }
 
   .producto-cantidad {
@@ -79,7 +79,8 @@
   }
 
   .producto-precio {
-      font-size: 12px;
+      font-size: 0.8em;
+      color: white;
   }
 
   .producto-boton {
