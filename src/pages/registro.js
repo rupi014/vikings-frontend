@@ -7,6 +7,7 @@ const Registro = () => {
     username: '',
     email: '',
     password: '',
+    repeatPassword: '', // Nuevo estado para repetir contraseña
     telephone: '',
     address: ''
   });
@@ -18,6 +19,10 @@ const Registro = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.password !== formData.repeatPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
     try {
       await axios.post('https://vikingsdb.up.railway.app/register', {
         ...formData,
@@ -42,7 +47,7 @@ const Registro = () => {
           value={formData.username}
           onChange={handleChange}
           required
-          autoComplete="username"
+          autoComplete="name"
           placeholder="Nombre de usuario"
         />
         <label>Contraseña:</label>
@@ -54,6 +59,16 @@ const Registro = () => {
           required
           autoComplete="new-password"
           placeholder="Contraseña"
+        />
+        <label>Repetir Contraseña:</label>
+        <input
+          type="password"
+          name="repeatPassword"
+          value={formData.repeatPassword}
+          onChange={handleChange}
+          required
+          autoComplete="new-password"
+          placeholder="Repetir Contraseña"
         />
         <label>Email:</label>
         <input
