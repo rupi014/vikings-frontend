@@ -39,6 +39,16 @@
     cursor: pointer; /* Asegura que el cursor cambie al pasar sobre el span */
 }
 
+.nav a:hover {
+    color: #ffcc00;
+    text-decoration: underline; 
+}   
+
+.nav span:hover {
+    color: #ffcc00;
+    text-decoration: underline; 
+}
+
 .user-actions {
     display: flex;
     align-items: center;
