@@ -5,6 +5,8 @@ Este repositorio contiene el frontend del sitio web oficial del club de esports 
 ## Funcionalidades
 
 - **Secciones del equipo**: Muestra a los miembros del club en varias áreas.
+- **Almacenamiento de contenido**: Tanto los miembros como los productos son recuperados de una base de datos propia.
+- **Gestion de contenido**: Los miembros y los productos son renderizados desde la base de datos a traves de una API propia.
 - **Blog**: Permite leer y crear artículos.
 - **Tienda**: Incluye productos oficiales del equipo.
 - **Formulario de contacto**: Para que los usuarios se comuniquen con el club.
