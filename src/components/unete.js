@@ -9,7 +9,7 @@ const Unete = () => {
       <div className="content-joinus">
         <h2>¿Quieres formar parte de la familia Vikinga?</h2>
         <p>¡Lo tienes muy fácil!</p>
-        <Link to="/contact" className="unete-button">¡UNETE!</Link>
+        <Link to="https://docs.google.com/forms/d/e/1FAIpQLSdMDh30On7Ue2QTdGNSNHwTZGk6a4HWRdHtoZdPKB_dV1zSCA/viewform" className="unete-button">¡UNETE!</Link>
       </div>
       <div className="img-joinus">
         <img src={Image} alt="Imagen Contacto" />

@@ -47,8 +47,8 @@ const Header = () => {
             )}
           </li>
           <li><Link to="/blog" onClick={closeMenu}>BLOG</Link></li>
-          <li><Link to="/contact" onClick={closeMenu}>CONTACTO</Link></li>
           <li><Link to="/tienda" onClick={closeMenu}>TIENDA</Link></li>
+          <li><Link to="/contact" onClick={closeMenu}>CONTACTO</Link></li>
         </ul>
       </nav>
       <div className="user-actions">
