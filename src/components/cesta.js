@@ -43,6 +43,15 @@ const Cesta = () => {
 
                 const orderId = orderResponse.data.id;
 
+                // Guardar los datos de la orden
+                const orderData = {
+                    id: orderId,
+                    user_id: userInfo.id,
+                    order_date: orderResponse.data.order_date,
+                    total_price: total_price,
+                    status: 'procesando'
+                };
+
                 // Añadir los artículos al pedido
                 for (const producto of cesta) {
                     await axios.post('https://vikingsdb.up.railway.app/products_order/', {
@@ -62,7 +71,9 @@ const Cesta = () => {
                 console.log('Pedido realizado');
                 localStorage.setItem('lastOrder', JSON.stringify(cesta));
                 vaciarCesta(); // Vaciar la cesta
-                navigate('/pago'); // Redirigir a la página de pago
+
+                // Redirigir a la página de pago con los datos de la orden
+                navigate('/pago', { state: { orderData } });
             } catch (error) {
                 console.error('Error al realizar el pedido:', error);
                 alert('Hubo un error al realizar el pedido.');
