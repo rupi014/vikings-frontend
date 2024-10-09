@@ -23,22 +23,22 @@ const Footer = () => {
             <img src={kong} alt="Kong Logo" />
             </div>
             <div className="footer-social">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/VikingsRift" target="_blank" rel="noopener noreferrer">
                 <img src={twitter} alt="Twitter" />
             </a>
-            <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.twitch.tv/vikingsoftherift" target="_blank" rel="noopener noreferrer">
                 <img src={twitch} alt="Twitch" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/vikingsrift/" target="_blank" rel="noopener noreferrer">
                 <img src={instagram} alt="Instagram" />
             </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.tiktok.com/@vikingsoftherift" target="_blank" rel="noopener noreferrer">
                 <img src={tiktok} alt="TikTok" />
             </a>
-            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://discord.com/invite/gSwN3PRru8" target="_blank" rel="noopener noreferrer">
                 <img src={discord} alt="Discord" />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/channel/UCqv4eCoYGy7w6aeQc9CAsSA" target="_blank" rel="noopener noreferrer">
                 <img src={youtube} alt="YouTube" />
             </a>
             </div>
