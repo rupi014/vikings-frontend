@@ -36,6 +36,8 @@
   width: 94%;
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: 3px;
+  color: white; 
   border: 1px solid #ffd700;
   background-color: #444;
 }
