@@ -23,6 +23,7 @@ import Registro from './pages/registro';
 import Pago2 from './pages/pago2';
 import './App.css';
 
+
 function App() {
   return (
     <Router>
