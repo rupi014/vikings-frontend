@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import { Editor } from '@tinymce/tinymce-react'; // Importa el editor de TinyMCE
+import { Editor } from '@tinymce/tinymce-react';
 import DOMPurify from 'dompurify';
 import '../pages/page-styles/blogs.css';
 
@@ -19,6 +19,7 @@ const BlogList = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+  // Funcion para obtener los blogs de la base de datos
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
@@ -41,6 +42,7 @@ const BlogList = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [loading]);
 
+  // Funcion para cargar mas blogs
   useEffect(() => {
     if (!loading) return;
     if (visibleBlogs >= blogs.length) return;
@@ -53,14 +55,17 @@ const BlogList = () => {
     loadMoreBlogs();
   }, [loading, visibleBlogs, blogs.length]);
 
+  // Funcion para navegar a la pagina del blog
   const handleBlogClick = (id) => {
     navigate(`/blog/${id}`);
   };
 
+  // Funcion para abrir el modal
   const openModal = () => {
     setModalIsOpen(true);
   };
 
+  // Funcion para cerrar el modal
   const closeModal = () => {
     setModalIsOpen(false);
   };
@@ -78,6 +83,7 @@ const BlogList = () => {
     setImageFile(e.target.files[0]);
   };
 
+  // Funcion para subir la imagen a cloudinary
   const uploadImageToCloudinary = async () => {
     const formData = new FormData();
     formData.append('file', imageFile);
@@ -95,6 +101,7 @@ const BlogList = () => {
     }
   };
 
+  // Funcion para guardar el blog en la base de datos
   const handleSubmit = async (e) => {
     e.preventDefault();
     const imageUrl = await uploadImageToCloudinary();
@@ -103,21 +110,20 @@ const BlogList = () => {
       return;
     }
 
-    const author_id = 33; // Reemplaza esto con el ID del usuario logeado
+    const author_id = 33;
     const date = new Date().toISOString();
     const blogData = { ...newBlog, image: imageUrl, author_id, date };
 
-    const token = localStorage.getItem('token'); // Obtén el token de autenticación
+    const token = localStorage.getItem('token');
 
     axios.post('https://vikingsdb.up.railway.app/blog/', blogData, {
       headers: {
-        'Authorization': `Bearer ${token}` // Incluye el token en los encabezados
+        'Authorization': `Bearer ${token}`
       }
     })
     .then(response => {
       setBlogs([...blogs, response.data]);
       closeModal();
-      // Restablecer el estado del nuevo blog y la imagen
       setNewBlog({ title: '', content: '', image: '' });
       setImageFile(null);
     })

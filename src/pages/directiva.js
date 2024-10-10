@@ -6,6 +6,7 @@ import './page-styles/directiva.css';
 const Directiva = () => {
   const [miembros, setMiembros] = useState([]);
 
+  // Funcion para obtener los datos de la directiva de la base de datos
   useEffect(() => {
     axios.get('https://vikingsdb.up.railway.app/staff/')
       .then(response => setMiembros(response.data))

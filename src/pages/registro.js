@@ -7,7 +7,7 @@ const Registro = () => {
     username: '',
     email: '',
     password: '',
-    repeatPassword: '', // Nuevo estado para repetir contraseña
+    repeatPassword: '',
     telephone: '',
     address: ''
   });
@@ -17,8 +17,10 @@ const Registro = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Funcion para registrar el usuario
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Funcion para verificar si las contraseñas coinciden
     if (formData.password !== formData.repeatPassword) {
       alert('Las contraseñas no coinciden');
       return;

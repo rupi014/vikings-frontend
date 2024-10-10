@@ -1,5 +1,5 @@
 .footer {
-  position: relative; /* Necesario para posicionar el logo de manera absoluta */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,7 +7,7 @@
   background-color: #333;
   padding: 20px;
   color: #fff;
-  box-shadow: -1px -6px 9px 6px rgba(0, 0, 0, 0.5) /* Sombreado para diferenciar el footer */
+  box-shadow: -1px -6px 9px 6px rgba(0, 0, 0, 0.5)
 }
 
 .footer-top {
@@ -67,7 +67,7 @@
   }
 
   .footer-vikings-logo img {
-    height: 30px; /* Ajusta el tamaño del logo */
+    height: 30px;
   }
 
   .footer-kong-logo img {

@@ -6,6 +6,7 @@ import './page-styles/casters.css';
 const Casters = () => {
   const [miembros, setMiembros] = useState([]);
 
+  // Funcion para obtener los datos de los casters de la base de datos
   useEffect(() => {
     axios.get('https://vikingsdb.up.railway.app/staff/')
       .then(response => setMiembros(response.data))

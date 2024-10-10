@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-    padding: 0 20px; /* Ajusta el padding para que no afecte la altura del logo */
+    padding: 0 20px;    
     background-image: url('../../assets/images/fondos/header-fondo.webp');
     background-size: cover;
     background-position: center;
@@ -12,12 +12,12 @@
 }
 
 .logo {
-    height: 100%; /* Asegúrate de que el contenedor del logo ocupe todo el alto del header */
+    height: 100%;    
 }
 
 .logo img {
-    height: 100%; /* Hace que la imagen ocupe todo el alto del contenedor del logo */
-    object-fit: contain; /* Ajusta la imagen para que se contenga dentro del contenedor */
+    height: 100%;    
+    object-fit: contain;
 }
 
 .nav {
@@ -32,11 +32,11 @@
     margin-right: 100px;  
 }
 
-.nav a, .nav span { /* Aplica estilos a span también */
+.nav a, .nav span {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    cursor: pointer; /* Asegura que el cursor cambie al pasar sobre el span */
+    cursor: pointer;
 }
 
 .nav a:hover {
@@ -88,7 +88,7 @@
 }
 
 .menu-toggle {
-    display: none; /* Oculta el botón por defecto */
+    display: none;
 }
 
 /* Estilos para el menú desplegable */

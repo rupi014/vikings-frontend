@@ -6,6 +6,7 @@ import './page-styles/equipos.css';
 const Equipos = () => { 
   const [miembros, setMiembros] = useState([]);
 
+  // Funcion para obtener los datos de los equipos de la base de datos
   useEffect(() => {
     axios.get('https://vikingsdb.up.railway.app/players/')
       .then(response => setMiembros(response.data))

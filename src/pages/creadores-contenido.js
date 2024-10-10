@@ -6,6 +6,7 @@ import './page-styles/creadores-contenido.css';
 const CreadoresContenido = () => {
   const [miembros, setMiembros] = useState([]);
 
+  // Funcion para obtener los datos de los creadores de contenido de la base de datos
   useEffect(() => {
     axios.get('https://vikingsdb.up.railway.app/staff/')
       .then(response => setMiembros(response.data))

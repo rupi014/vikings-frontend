@@ -11,6 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { setUser, setUserInfo } = useContext(CestaContext);
 
+  // Funcion para iniciar sesion
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -38,12 +39,12 @@ const Login = () => {
     } catch (error) {
       if (error.response) {
         if (error.response.status === 401) {
-          setErrorMessage('Usuario o contraseña incorrecto'); // Error de autenticación
+          setErrorMessage('Usuario o contraseña incorrecto');
         } else {
-          setErrorMessage('No fue posible conectar al servidor'); // Otro error del servidor
+          setErrorMessage('No fue posible conectar al servidor');
         }
       } else {
-        setErrorMessage('No fue posible conectar al servidor'); // Error de red u otro problema
+        setErrorMessage('No fue posible conectar al servidor');
       }
       console.error('Error al iniciar sesión', error.response ? error.response.data : error);
     }

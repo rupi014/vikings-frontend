@@ -10,9 +10,9 @@ const Perfil = () => {
   const [userOrders, setUserOrders] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
   const [productNames, setProductNames] = useState({});
-  const [visibleOrderId, setVisibleOrderId] = useState(null); // Estado para controlar la visibilidad de la tabla
+  const [visibleOrderId, setVisibleOrderId] = useState(null);
 
-  // Use useCallback to memorize handleLogout
+  // Funcion para cerrar la sesion usa callback para memorizar la funcion
   const handleLogout = useCallback(() => {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
@@ -21,6 +21,7 @@ const Perfil = () => {
     navigate('/login');
   }, [navigate, setUser, setUserInfo]);
 
+  // Funcion para verificar el token
   useEffect(() => {
     const verifyToken = async () => {
       try {
@@ -36,10 +37,11 @@ const Perfil = () => {
         setUserInfo(response.data);
       } catch (error) {
         console.error('Error verifying token:', error);
-        handleLogout(); // Desloguear si el token no es válido
+        handleLogout();
       }
     };
 
+    // Funcion para obtener los pedidos del usuario
     const fetchUserOrders = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -61,9 +63,10 @@ const Perfil = () => {
     }
   }, [setUserInfo, userInfo, handleLogout]);
 
+  // Funcion para ver los productos del pedido
   const handleViewProducts = async (orderId) => {
     if (visibleOrderId === orderId) {
-      setVisibleOrderId(null); // Oculta la tabla si ya está visible
+      setVisibleOrderId(null);
       return;
     }
 
@@ -87,14 +90,15 @@ const Perfil = () => {
         productNamesTemp[product.product_id] = productResponse.data.name;
       }
       setProductNames(productNamesTemp);
-      setVisibleOrderId(orderId); // Muestra la tabla para el pedido actual
+      setVisibleOrderId(orderId);
     } catch (error) {
       console.error('Error fetching order products:', error);
     }
   };
 
+  // Funcion para mostrar el perfil del usuario
   if (!userInfo) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
 
   return (

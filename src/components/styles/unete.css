@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     min-height: 400px;
-    width: 100%; /* Cambia a min-height si necesitas una altura mínima */
+    width: 100%;
     background-color: #f0c000;
     box-shadow: inset 0px 0px 10px 0px black; 
     color: #333;

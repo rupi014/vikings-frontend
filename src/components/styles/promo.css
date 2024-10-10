@@ -44,11 +44,11 @@
   
     .promo-persona,
     .promo-camiseta {
-      width: 150px; /* Ajusta el tamaño de las imágenes */
+      width: 150px;
       margin: 10px 0;
     }
   
     .promo-content p {
-      font-size: 1.5em; /* Ajusta el tamaño del texto */
+      font-size: 1.5em;
     }
   }

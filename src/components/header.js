@@ -6,21 +6,24 @@ import HeaderLogo from '../assets/images/logos/header-logo.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [subMenuOpen, setSubMenuOpen] = useState(false); // Nuevo estado para el submenú
+  const [subMenuOpen, setSubMenuOpen] = useState(false);
   const { getCestaCount, user } = useContext(CestaContext);
   const navigate = useNavigate();
 
+  // Funcion para abrir y cerrar el menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Funcion para abrir y cerrar el submenu
   const toggleSubMenu = () => {
     setSubMenuOpen(!subMenuOpen);
   };
 
+  // Funcion para cerrar el menu y el submenu
   const closeMenu = () => {
     setMenuOpen(false);
-    setSubMenuOpen(false); // Cierra también el submenú
+    setSubMenuOpen(false);
   };
 
   return (
@@ -34,7 +37,7 @@ const Header = () => {
         <ul>
           <li><Link to="/" onClick={closeMenu}>INICIO</Link></li>
           <li className="dropdown">
-            <span onClick={toggleSubMenu}>VIKINGS</span> {/* Cambiado a span para manejar el clic */}
+            <span onClick={toggleSubMenu}>VIKINGS</span>
             {subMenuOpen && (
               <div className="dropdown-content">
                 <Link to="/equipos" onClick={closeMenu}>EQUIPOS</Link>

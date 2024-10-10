@@ -6,6 +6,7 @@ import './page-styles/equipo-tecnico.css';
 const EquipoTecnico = () => {
   const [miembros, setMiembros] = useState([]);
 
+  // Funcion para obtener los datos del equipo tecnico de la base de datos
   useEffect(() => {
     axios.get('https://vikingsdb.up.railway.app/staff/')
       .then(response => setMiembros(response.data))

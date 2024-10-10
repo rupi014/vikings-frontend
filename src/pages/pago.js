@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import { useLocation } from 'react-router-dom'; // Importar useLocation
+import { useLocation } from 'react-router-dom';
 import './page-styles/pago.css';
-import axios from 'axios'; // Asegúrate de importar axios
+import axios from 'axios';
 
 const Pago = () => {
   const location = useLocation();
-  const { orderData } = location.state || {}; // Obtener los datos de la orden
+  const { orderData } = location.state || {}; // Obtener los datos del pedido
   const [cesta, setCesta] = useState([]);
 
+  // Funcion para obtener los datos del pedido
   useEffect(() => {
     const storedCesta = JSON.parse(localStorage.getItem('lastOrder'));
     if (storedCesta) {
@@ -62,17 +63,17 @@ const Pago = () => {
             }}
             onApprove={(data, actions) => {
               return actions.order.capture().then(details => {
+                // Funcion para actualizar el estado del pedido
                 if (orderData) {
                   const updatedOrderData = {
                     ...orderData,
                     status: "pagado"
                   };
 
-                  // Realizar la petición PUT con axios
                   axios.put(`https://vikingsdb.up.railway.app/orders/${orderData.id}`, updatedOrderData, {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${localStorage.getItem('token')}` // Añadir el token de autenticación
+                      'Authorization': `Bearer ${localStorage.getItem('token')}` 
                     }
                   })
                   .then(response => {

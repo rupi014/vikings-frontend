@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    height: 500px; /* Ajusta la altura según sea necesario */
+    height: 500px;
 }
 
 .video-background {
@@ -28,7 +28,7 @@
   }
 
   .banner-image2 {
-    width: 355px; /* Ajusta el tamaño según sea necesario */
+    width: 355px;
   }
   
   .banner-logo {
@@ -40,28 +40,28 @@
 
   @media (max-width: 768px) {
     .banner {
-      height: 300px; /* Ajusta la altura para pantallas más pequeñas */
+      height: 300px;
     }
 
     .video-background {
-        height: 300px; /* Ajusta la altura para pantallas más pequeñas */
+        height: 300px;
     }
   
     .banner-image1 {
-      width: 220px; /* Ajusta el tamaño de las imágenes */
+      width: 220px;
       margin-left: -80px;
       margin-right: -100px;
       margin-top: 150px;
     }
 
     .banner-image2 {
-      width: 110px; /* Ajusta el tamaño de las imágenes */
+      width: 110px;
       margin-left: -170px;
       margin-top: 150px;
     }
 
     .banner-logo {
-      width: 300px; /* Ajusta el tamaño de las imágenes */
+      width: 300px;
       margin-left: 0;
       margin-right: 110px;
     }

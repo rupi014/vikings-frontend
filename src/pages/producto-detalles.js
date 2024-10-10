@@ -10,8 +10,9 @@ const ProductoDetalles = () => {
   const [talla, setTalla] = useState('S');
   const [cantidad, setCantidad] = useState(1);
   const { addToCesta } = useContext(CestaContext);
-  const [botonTexto, setBotonTexto] = useState('Agregar al carrito'); // Estado para el texto del botón
+  const [botonTexto, setBotonTexto] = useState('Agregar al carrito');
 
+  // Funcion para obtener los datos del producto
   useEffect(() => {
     const fetchProducto = async () => {
       try {
@@ -29,6 +30,7 @@ const ProductoDetalles = () => {
     fetchProducto();
   }, [id]);
 
+  // Funcion para agregar el producto al carrito
   const handleAgregarAlCarrito = () => {
     const productoConDetalles = {
       ...producto,
@@ -40,7 +42,7 @@ const ProductoDetalles = () => {
     }
 
     addToCesta(productoConDetalles);
-    setBotonTexto('✅ Producto Añadido'); // Cambia el texto del botón
+    setBotonTexto('✅ Producto Añadido');
     console.log('Producto agregado al carrito');
   };
 

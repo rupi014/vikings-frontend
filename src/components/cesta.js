@@ -13,6 +13,7 @@ const Cesta = () => {
         updateCantidad(productoId, nuevaCantidad);
     };
 
+    // Se crea la funcion para realizar el pedido
     const handleRealizarPedido = async () => {
         if (!isAuthenticated()) {
             navigate('/login');
@@ -20,7 +21,7 @@ const Cesta = () => {
             alert('No se pudo obtener la información del usuario. Por favor, intente nuevamente.');
         } else {
             try {
-                setLoading(true); // Set loading to true
+                setLoading(true);
                 const token = localStorage.getItem('token');
                 if (!token) {
                     throw new Error('No se encontró el token de autenticación');
@@ -43,7 +44,7 @@ const Cesta = () => {
 
                 const orderId = orderResponse.data.id;
 
-                // Guardar los datos de la orden
+                // Guardar los datos del pedido
                 const orderData = {
                     id: orderId,
                     user_id: userInfo.id,
@@ -72,13 +73,13 @@ const Cesta = () => {
                 localStorage.setItem('lastOrder', JSON.stringify(cesta));
                 vaciarCesta(); // Vaciar la cesta
 
-                // Redirigir a la página de pago con los datos de la orden
+                // Redirigir a la página de pago con los datos del pedido
                 navigate('/pago', { state: { orderData } });
             } catch (error) {
                 console.error('Error al realizar el pedido:', error);
                 alert('Hubo un error al realizar el pedido.');
             } finally {
-                setLoading(false); // Reset loading state
+                setLoading(false);
             }
         }
     };

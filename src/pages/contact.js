@@ -17,6 +17,7 @@ const Contact = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Funcion para enviar el mensaje con emailjs
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -29,7 +30,7 @@ const Contact = () => {
     .then((result) => {
         console.log(result.text);
         alert('Mensaje enviado con éxito');
-        setFormData({ user_name: '', user_email: '', subject: '', message: '' }); // Restablecer el formulario
+        setFormData({ user_name: '', user_email: '', subject: '', message: '' });
     }, (error) => {
         console.log(error.text);
         alert('Hubo un error al enviar el mensaje');

@@ -6,6 +6,7 @@ import './page-styles/seccion-contenido.css';
 const SeccionContenido = () => {
   const [miembros, setMiembros] = useState([]);
 
+  // Funcion para obtener los datos de la seccion de contenido
   useEffect(() => {
     axios.get('https://vikingsdb.up.railway.app/staff/')
       .then(response => setMiembros(response.data))

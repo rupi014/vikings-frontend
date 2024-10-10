@@ -7,6 +7,7 @@ const Tienda = () => {
   const [productos, setProductos] = useState([]);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
 
+  // Funcion para obtener los datos de los productos
   useEffect(() => {
     fetch('https://vikingsdb.up.railway.app/products/')
       .then(response => response.json())
@@ -14,6 +15,7 @@ const Tienda = () => {
       .catch(error => console.error('Error fetching products:', error));
   }, []);
 
+  // Funcion para filtrar los productos por categoria
   const filtrarProductos = () => {
     if (categoriaSeleccionada === 'todos') {
       return productos;

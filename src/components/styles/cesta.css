@@ -86,7 +86,7 @@
     cursor: pointer;
     margin-top: 20px;
     font-size: 16px;
-    align-self: center; /* Centra el botón horizontalmente */
+    align-self: center;
 }
 
 .realizar-pedido-boton:hover {

@@ -13,7 +13,7 @@ import imagen7 from '../assets/images/home_images/imagen7.webp';
 import imagen8 from '../assets/images/home_images/imagen8.webp';
 import imagen9 from '../assets/images/home_images/imagen9.webp';
 
-
+// Se crea el carousel de la pagina principal
 const Carousel = () => {
   const settings = {
     dots: true,
