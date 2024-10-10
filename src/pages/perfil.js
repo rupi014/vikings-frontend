@@ -96,6 +96,24 @@ const Perfil = () => {
     }
   };
 
+  // Funcion para manejar el pago
+  const handlePayment = async (orderId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`https://vikingsdb.up.railway.app/products_order/${orderId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const products = response.data;
+
+      // Redirigir a la página de pago con los productos del pedido
+      navigate('/pago2', { state: { products, orderId } });
+    } catch (error) {
+      console.error('Error fetching order products for payment:', error);
+    }
+  };
+
   // Funcion para mostrar el perfil del usuario
   if (!userInfo) {
     return <div>Cargando...</div>;
@@ -134,6 +152,11 @@ const Perfil = () => {
                   <button onClick={() => handleViewProducts(order.id)}>
                     {visibleOrderId === order.id ? 'Ocultar Productos' : 'Ver Productos'}
                   </button>
+                  {order.status === 'procesando' && (
+                    <button onClick={() => handlePayment(order.id)}>
+                      Pagar
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
