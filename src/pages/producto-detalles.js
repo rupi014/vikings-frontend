@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useParams, useNavigate } from 'react-router-dom'; 
 import { CestaContext } from '../context/cesta-context';
 import './page-styles/producto-detalles.css';
 import Modal from 'react-modal';
@@ -14,8 +14,8 @@ const ProductoDetalles = () => {
   const [cantidad, setCantidad] = useState(1);
   const { addToCesta } = useContext(CestaContext);
   const [botonTexto, setBotonTexto] = useState('Agregar al carrito');
-  const [mostrarModal, setMostrarModal] = useState(false); // Estado para controlar el modal
-  const navigate = useNavigate(); // Hook para redireccionar
+  const [mostrarModal, setMostrarModal] = useState(false); 
+  const navigate = useNavigate(); 
 
   // Funcion para obtener los datos del producto
   useEffect(() => {
@@ -52,14 +52,16 @@ const ProductoDetalles = () => {
     console.log('Producto agregado al carrito');
   };
 
+  // Funcion para seguir comprando
   const handleSeguirComprando = () => {
     setMostrarModal(false);
-    navigate('/tienda'); // Redirige a /tienda
+    navigate('/tienda'); 
   };
 
+  // Funcion para ir a la cesta
   const handleIrACesta = () => {
     setMostrarModal(false);
-    navigate('/cesta'); // Redirige a /cesta
+    navigate('/cesta'); 
   };
 
   if (error) {
