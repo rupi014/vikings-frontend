@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import './page-styles/pago2.css';
+import './page-styles/pago.css';
 
 const Pago2 = () => {
   const location = useLocation();
