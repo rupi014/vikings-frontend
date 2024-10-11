@@ -9,6 +9,7 @@ const Pago2 = () => {
   const { products, orderId } = location.state || {};
   const [detailedProducts, setDetailedProducts] = useState([]);
 
+  // Recuperar los detalles de los productos
   useEffect(() => {
     const fetchProductDetails = async (product) => {
       try {
@@ -31,6 +32,7 @@ const Pago2 = () => {
       }
     };
 
+    // Cargar los detalles de los productos
     const loadProducts = async () => {
       if (products) {
         const detailedProducts = await Promise.all(products.map(fetchProductDetails));
@@ -41,13 +43,13 @@ const Pago2 = () => {
     loadProducts();
   }, [products]);
 
+  // Calcular el total del pedido
   const totalAmount = detailedProducts.reduce((total, product) => total + product.price * product.quantity, 0);
 
+  // Función para obtener el total del pedido en formato de cadena
   const getOrderAmount = () => {
     return totalAmount.toFixed(2);
   };
-
-  console.log(totalAmount);
 
   return (
     <div className="pago-page">
@@ -71,8 +73,7 @@ const Pago2 = () => {
         <div className="pago-total">
           <p>Total: {totalAmount.toFixed(2)} €</p>
         </div>
-  
-        {/* Renderiza el botón de PayPal solo si el totalAmount es mayor a 0 */}
+          
         {totalAmount > 0 && (
           <PayPalScriptProvider 
             options={{ 
@@ -86,7 +87,7 @@ const Pago2 = () => {
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
-                      value: getOrderAmount(), // Llama a la función para obtener el total
+                      value: getOrderAmount(), 
                       currency_code: 'EUR'
                     }
                   }]
@@ -102,8 +103,8 @@ const Pago2 = () => {
                     })
                     .then(response => {
                       const updatedOrderData = {
-                        ...response.data, // Incluye todos los campos actuales de la orden
-                        status: "pagado"  // Actualiza solo el campo status
+                        ...response.data,
+                        status: "pagado"  
                       };
 
                       return axios.put(`https://vikingsdb.up.railway.app/orders/${orderId}`, updatedOrderData, {

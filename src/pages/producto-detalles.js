@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Importa useNavigate
 import { CestaContext } from '../context/cesta-context';
 import './page-styles/producto-detalles.css';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const ProductoDetalles = () => {
   const { id } = useParams();
@@ -11,6 +14,8 @@ const ProductoDetalles = () => {
   const [cantidad, setCantidad] = useState(1);
   const { addToCesta } = useContext(CestaContext);
   const [botonTexto, setBotonTexto] = useState('Agregar al carrito');
+  const [mostrarModal, setMostrarModal] = useState(false); // Estado para controlar el modal
+  const navigate = useNavigate(); // Hook para redireccionar
 
   // Funcion para obtener los datos del producto
   useEffect(() => {
@@ -43,7 +48,18 @@ const ProductoDetalles = () => {
 
     addToCesta(productoConDetalles);
     setBotonTexto('✅ Producto Añadido');
+    setMostrarModal(true); // Muestra el modal después de agregar al carrito
     console.log('Producto agregado al carrito');
+  };
+
+  const handleSeguirComprando = () => {
+    setMostrarModal(false);
+    navigate('/tienda'); // Redirige a /tienda
+  };
+
+  const handleIrACesta = () => {
+    setMostrarModal(false);
+    navigate('/cesta'); // Redirige a /cesta
   };
 
   if (error) {
@@ -56,7 +72,7 @@ const ProductoDetalles = () => {
 
   return (
     <div className="producto-detalles-page">
-      <div className="producto-detalles-container">
+      <div className={`producto-detalles-container ${mostrarModal ? 'blur' : ''}`}>
         <div className="producto-detalles-izquierda">
           <img src={producto.image} alt={producto.name} className="producto-detalles-imagen" />
           <p className="producto-detalles-descripcion">{producto.description}</p>
@@ -94,6 +110,19 @@ const ProductoDetalles = () => {
           </button>
         </div>
       </div>
+      <Modal
+        isOpen={mostrarModal}
+        onRequestClose={() => setMostrarModal(false)}
+        contentLabel="Producto Añadido"
+        className="modal-producto-detalles"
+        overlayClassName="modal-overlay-producto-detalles"
+      >
+        <div className="modal-contenido">
+          <p>Producto añadido al carrito</p>
+          <button className="modal-boton" onClick={handleSeguirComprando}>Seguir comprando</button>
+          <button className="modal-boton" onClick={handleIrACesta}>Ir a la cesta</button>
+        </div>
+      </Modal>
     </div>
   );
 };
